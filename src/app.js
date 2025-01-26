@@ -1,22 +1,16 @@
-require('dotenv').config();
-const express = require('express');
-const { getAuthURL, getAccessToken, oauth2Client } = require('./auth/gmailAuth');
-const { fetchEmails } = require('./services/emailService');
-
+const express = require("express");
+const bodyParser = require("body-parser");
+const { startEmailPolling } = require("./services/gmailProcessing");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// Middleware
+app.use(bodyParser.json());
 
-// Default route
-app.get('/', (req, res) => {
-    res.send('Email Parser Bot is running...');
-});
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Routes
+app.get("/", (req, res) => {
+    res.send("Email Categorization Service is running!");
 });
 
 app.get('/auth/google', (req, res) => {
@@ -29,10 +23,17 @@ app.get('/oauth2callback', async (req, res) => {
     res.json({ message: "Authentication successful!", tokens });
 });
 
-app.get('/emails', async (req, res) => {
-    if (!oauth2Client.credentials.access_token) {
-        return res.status(401).json({ error: "Unauthorized. Please authenticate first." });
-    }
-    const emails = await fetchEmails();
-    res.json(emails);
+// Start email polling
+console.log("Starting email polling service...");
+startEmailPolling(10000); // Poll every 60 seconds
+
+// Error handler
+app.use((err, req, res, next) => {
+    console.error("An error occurred:", err.stack);
+    res.status(500).json({ error: "An unexpected error occurred. Please try again later." });
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
