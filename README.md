@@ -2,6 +2,8 @@
 ## Overview
 ### This project is an automated email categorizer and responder using Gmail API.
 ### It scans unread emails, categorizes them into predefined categories (e.g., Interested, Not Interested), sends appropriate replies, and moves them into corresponding labels. 
+## Demo Link- 
+[https://drive.google.com/file/d/1AV7dDu0ccaMunSH0EviijsIeNafb1Hu8/view?usp=sharing]
 ## Features
 ### - Automatically fetches unread emails.
 ### - Categorizes emails using custom logic.
