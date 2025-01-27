@@ -22,3 +22,12 @@
 ####    -Go to Google Cloud Console.
 ####    -Create a new project and enable the Gmail API.
 ####    -Download the credentials.json file.
+### 2. Add your credentials and tokens in a .env file:
+#### GMAIL_CLIENT_ID=<your-client-id>
+#### GMAIL_CLIENT_SECRET=<your-client-secret>
+#### GMAIL_REFRESH_TOKEN=<your-refresh-token>
+## Running the Application
+### 1- See the previously mentioned link for Redis and start the Redis Server with the given steps.
+### 2- run the NodeJS server "node src/app.js"
+### 3- Check whether you get "Connected to Redis!" or not?
+### 4- After getting success in previous steps, Use start and stop api to on/off the email automation.
