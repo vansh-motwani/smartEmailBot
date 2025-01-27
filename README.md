@@ -13,4 +13,12 @@
 #### - Node.js (16.x or above) - NPM or Yarn 
 #### - Reddis
 ## Installation-
-# 1. Clone the repository: ```bash git clone <your-repository-url>
+### 1. Clone the repository: ```bash git clone <repository-url>
+### 2. Navigate to the project directory: cd <project-folder>
+### 3. npm install
+### 4. Install Redis through- (Redis Win 11 installation guide)[https://redis.io/blog/install-redis-windows-11/]
+## Configuration
+### 1. Set up Gmail API credentials:
+####    -Go to Google Cloud Console.
+####    -Create a new project and enable the Gmail API.
+####    -Download the credentials.json file.
